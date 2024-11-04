@@ -2,7 +2,6 @@ package main
 
 import "net/http"
 
-// Client represents an Aviabit API client
 type Client struct {
 	BaseURL    string
 	HTTPClient *http.Client
