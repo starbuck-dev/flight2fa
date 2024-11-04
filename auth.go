@@ -12,7 +12,8 @@ import (
 
 // Authenticate performs the complete authentication process with automatic 2FA handling
 func Authenticate(username, password, baseURL string) (*Client, error) {
-	client, err := NewClient(baseURL + "/api")
+
+	client, err := NewClient(baseURL)
 	if err != nil {
 		return nil, fmt.Errorf("failed to create client: %v", err)
 	}
@@ -68,10 +69,12 @@ func (c *Client) attemptLogin(username, password, code string) (*LoginResponse, 
 		return nil, fmt.Errorf("failed to create request: %v", err)
 	}
 
+	println(c.BaseURL)
+	println(c.BaseURL + "/Login")
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("Accept", "*/*")
-	request.Header.Set("Origin", origin)
-	request.Header.Set("Referer", referer)
+	request.Header.Set("Origin", c.BaseURL)
+	request.Header.Set("Referer", c.BaseURL+"/Login")
 	request.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36")
 
 	resp, err := c.HTTPClient.Do(request)

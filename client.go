@@ -61,8 +61,6 @@ func NewClient(baseURL string) (*Client, error) {
 		},
 	}
 
-	SetGlobalUrl(baseURL)
-
 	return &Client{
 		BaseURL:    baseURL,
 		HTTPClient: client,
