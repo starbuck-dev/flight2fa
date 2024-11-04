@@ -40,11 +40,7 @@ func main() {
 }
 
 func GetSchedule(client *flight2fa.Client) (string, error) {
-    days, err := strconv.Atoi(flight2fa.Days)
-    if err != nil {
-        return "", fmt.Errorf("invalid days parameter: %v", err)
-    }
-
+    days := 30
     now := time.Now()
     url := fmt.Sprintf(
         "%s?dateBegin=%d&dateEnd=%d&eng=false&airportCode=3",
@@ -67,12 +63,6 @@ func GetSchedule(client *flight2fa.Client) (string, error) {
 - Support for custom HTTP client configuration
 
 ## Configuration
-
-You can configure the number of days for schedule retrieval by setting the `Days` variable:
-
-```go
-flight2fa.Days = "30" // Default is 30 days
-```
 
 You can also set a custom API endpoint using an environment variable:
 
