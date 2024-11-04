@@ -69,8 +69,6 @@ func (c *Client) attemptLogin(username, password, code string) (*LoginResponse, 
 		return nil, fmt.Errorf("failed to create request: %v", err)
 	}
 
-	println(c.BaseURL)
-	println(c.BaseURL + "/Login")
 	request.Header.Set("Content-Type", "application/json")
 	request.Header.Set("Accept", "*/*")
 	request.Header.Set("Origin", c.BaseURL)
