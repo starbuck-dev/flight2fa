@@ -12,7 +12,7 @@ import (
 
 // Authenticate performs the complete authentication process with automatic 2FA handling
 func Authenticate(username, password, baseURL string) (*Client, error) {
-	client, err := NewClient(baseURL)
+	client, err := NewClient(baseURL + "/api")
 	if err != nil {
 		return nil, fmt.Errorf("failed to create client: %v", err)
 	}
