@@ -1,4 +1,4 @@
-package main
+package flight2fa
 
 import "net/http"
 
